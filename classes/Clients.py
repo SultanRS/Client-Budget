@@ -16,10 +16,18 @@ class Client:
     def getClients():
         query = """SELECT * FROM clients"""
         return query
+    
+    def findDuplicatedClient(self):
+        query = """SELECT Client_ID, Client_Name FROM clients WHERE Client_ID LIKE :clientID AND Client_Name = :clientName"""
+        return query
+    
+    def getMaxClientEntityID(self):
+        query = """SELECT Client_ID FROM clients WHERE Client_ID LIKE :clientID"""
+        return query
 
     def addClient(self):
         query = """INSERT INTO clients VALUES (:clientID, :clientName, :engagementID)"""
         return query
     
-    def updateClient(self, clientID, clientName, engagementID):
+    def updateClient(self):
         pass
